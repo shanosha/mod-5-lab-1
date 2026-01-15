@@ -1,6 +1,6 @@
-# Sumarry
+# Summary
 
-How did you dynamically create and append new elements to the DOM?
+Dynamic shopping cart that allows you to add items and prices. You cannot add an item without a name, or with a price at zero or lower.
 
 ## Reflections
 
