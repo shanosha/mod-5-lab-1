@@ -37,29 +37,7 @@ addProductButton.addEventListener("click", function () {
   let price = productPriceInput.value;
 
   if((name=="")||(price<0.01)){
-      try {
-      // Perform operations that might naturally throw errors (e.g., API calls with 'await')
-      // ...
-      
-      // Use 'if' to trigger a custom exception based on a specific condition
-      if ((name=="")||(price<0.01)) {
-        throw new ValidationError('Not enough credits to proceed'); // Manually throw an error
-      }
-
-      console.log('Proceeding with the operation.');
-      // ... rest of the try block logic ...
-
-    } catch (error) {
-      // Check the caught error's properties (e.g., name, message) to handle conditions
-      if (error.name === 'ValidationError') {
-        console.error(`Caught Validation Error: ${error.message}`);
-        // Handle the specific validation error
-      } else {
-        console.error(`Caught an unexpected error: ${error.message}`);
-        // Re-throw if the error cannot be handled here
-        // throw error; 
-      }
-    }
+      alert("Please fill out all fields. Price cannot be less than 0.")
   }
   else {
     addItem(name, price);
@@ -92,6 +70,6 @@ function renderCart() {
     totalPrice += item.price;
   }
   cart.appendChild(fragment);
-  totalPriceSpan.innerText = totalPrice;
+  totalPriceSpan.innerText = Math.round(totalPrice*100)/100;
 
 }
