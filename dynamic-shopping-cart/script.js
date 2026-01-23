@@ -35,8 +35,8 @@ cart.addEventListener("click",function(event){
   let element = event.target;
   if(element.classList.contains("remove")){
     cartItems.splice(element.dataset.id,1);
+    renderCart();
   }
-  renderCart();
 });
 
 // Renders the cart items from the array and recalculates the total
