@@ -8,30 +8,16 @@ let totalPrice = 0;
 
 let cartItems = [];
 
-// Function to update the total price
-function updateTotalPrice(amount) {
-  totalPrice += amount;
-  totalPriceSpan.textContent = totalPrice.toFixed(2);
-}
-
-// Function to remove an item
-function removeItem(event) {
-  const item = event.target.closest("li");
-  const price = parseFloat(item.dataset.price);
-  updateTotalPrice(-price);
-  item.remove();
-}
-
 // Function to add an item
 function addItem(name, price, qty = 1) {
-  console.log(cartItems);
   cartItems.push({
     name: String(name),
-    price: Number(price),
+    price: Number(price)
   });
   renderCart();
 }
 
+// Event listener when "add Product" button is clicked
 addProductButton.addEventListener("click", function () {
   let name = productNameInput.value;
   let price = productPriceInput.value;
@@ -42,19 +28,18 @@ addProductButton.addEventListener("click", function () {
   else {
     addItem(name, price);
   }
-
-  
 });
 
+// Event listener when remove item button is clicked
 cart.addEventListener("click",function(event){
   let element = event.target;
   if(element.classList.contains("remove")){
-    console.log("click");
     cartItems.splice(element.dataset.id,1);
   }
   renderCart();
 });
 
+// Renders the cart items from the array and recalculates the total
 function renderCart() {
   cart.innerHTML = "";
 
